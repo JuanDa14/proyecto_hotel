@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => '',
+    'title' => 'Hotel Sac Jose | SAC',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<label>P. Pimentel</label>',
+    'logo' => '<b>Hotel San Jose SAC</b>',
     'logo_img' => 'img/logo2.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -232,116 +232,43 @@ return [
             'can' => 'ver.dashboard',
         ],
         [
-            'text'    => 'Control de Stock',
-            'icon'    => 'fas fa-list',
-            'can' => 'ver.producto',
+            'text' => 'Reservas',
+            'icon' => 'fas fa-fw fa-book',
+            'url' => 'reservas'
+        ],
+        [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-user-tie',
+            'url' => 'user'
+        ],
+        [
+            'text' => 'Clientes',
+            'icon' => 'fas fa-fw fa-users',
+            'url' => 'clientes'
+        ],
+        [
+            'text' => 'Proovedores',
+            'icon' => 'fas fa-fw fa-user',
+            'url' => 'proveedores'
+        ],
+        [
+            'text' => 'Habitaciones',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text' => 'Productos',
-                    'url'  => 'productos',
-                    'can' => 'ver.producto',
+                    'text' => 'Tipo Habitacion',
+                    'url' => 'tipoHabitaciones'
                 ],
                 [
-                    'text' => 'Insumos',
-                    'url'  => 'insumos',
-                    'can' => 'ver.insumo',
-                ],
-                [
-                    'text' => 'Departamentos',
-                    'url'  => 'departamentos',
-                    'can' => 'ver.departamento',
-                ],
-            ],
+                    'text' => 'Gestionar Habitaciones',
+                    'url' => 'habitaciones'
+                ]
+            ]
         ],
         [
-            'text'    => 'Empleados',
-            'icon'    => 'fas fa-user',
-            'can' => 'ver.empleado',
-            'url'  => 'empleados',
-        ],
-        [
-            'text'    => 'Ventas',
-            'icon'    => 'fas fa-shopping-cart',
-            'can' => 'ver.venta',
-            'submenu' => [
-                [
-                    'text' => 'Nueva Venta',
-                    'url'  => 'ventas/create',
-                    'can' => 'create.venta',
-                ],
-                [
-                    'text' => 'Lista de Ventas',
-                    'url'  => 'ventas',
-                    'can' => 'ver.venta'
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Compra',
-            'icon'    => 'fas fa-store',
-            'can' => 'ver.ordenCompra',
-            'submenu' => [
-                [
-                    'text' => 'Nueva Compra',
-                    'url'  => 'ordencompras/create',
-                    'can' => 'create.ordenCompra',
-                ],
-                [
-                    'text' => 'Lista Compras',
-                    'url'  => 'ordencompras',
-                    'can' => 'ver.ordenCompra'
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Impuestos',
-            'icon'    => 'fas fa-dollar-sign',
-            'submenu' => [
-                [
-                    'text' => 'Registrar impuesto',
-                    'url'  => 'impuestos/create',
-                ],
-                [
-                    'text' => 'Lista de impuestos',
-                    'url'  => 'impuestos',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Reportes',
-            'icon'    => 'fas fa-clipboard-list',
-            'can' => 'ver.graficos',
-            'submenu' => [
-                [
-                    'text' => 'Ventas Realizadas',
-                    'url'  => 'reporteventa',
-                ],
-                [
-                    'text' => 'Impuestos',
-                    'route'  => 'vistaReporte',
-                ],
-            ],
-        ],
-        [
-            'text' => 'Ventas por Empleado',
-            'icon' => 'fas fa-child',
-            'url'  => 'descuentos',
-        ],
-        [
-            'text'    => 'Grafico de Ventas',
-            'icon'    => 'fas fa-chart-bar',
-            'route'  => 'graficoVentasMes',
-        ],
-        [
-            'text'    => 'Config. de cuenta',
-            'icon'    => 'fas fa-cog',
-            'submenu' => [
-                [
-                    'text' => 'Perfil',
-                    'route'  => 'profile.show',
-                ],
-
-            ],
+            'text' => 'Pefil de usuario',
+            'icon' => 'fas fa-fw fa-user',
+            'url' => 'profile'
         ],
     ],
 
