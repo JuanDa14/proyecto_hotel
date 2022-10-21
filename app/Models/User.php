@@ -43,4 +43,17 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function adminlte_image()
+    {
+    }
+
+    public function adminlte_desc()
+    {
+        
+    }
+
+    public function adminlte_profile_url()
+    {
+    }
 }
