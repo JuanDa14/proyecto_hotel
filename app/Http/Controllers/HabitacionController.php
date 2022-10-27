@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class HabitacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('can:tipo_habitacion.view')->only('index');
+        $this->middleware('can:tipo_habitacion.create')->only('create');
+        $this->middleware('can:tipo_habitacion.update')->only('edit');
+        $this->middleware('can:tipo_habitacion.show')->only('show');
+    }
+
     public function index()
     {
         $habitaciones = DB::table('habitaciones as h')

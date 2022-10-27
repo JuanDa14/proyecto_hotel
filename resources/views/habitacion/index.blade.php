@@ -8,9 +8,11 @@
         <div class="col-12 col-md-6 text-md-left">
             <h3 class="text-gray">Habitaciones</h3>
         </div>
+        @can('habitacion.create')
         <div class="col-12 col-md-6 text-md-right">
             <a href="{{ route('tipoHabitaciones.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Crear tipo de habitacion</button></a>
         </div>
+        @endcan
     </div>
     <table id="datatable" class="table dt-responsive nowrap text-center" style="width:100%">
         <thead>
@@ -18,7 +20,9 @@
                 <th scope="col">ID</th>
                 <th scope="col">Numero Habitacion</th>
                 <th scope="col">Tipo</th>
+                @can('habitacion.create')
                 <th scope="col">Acciones</th>
+                @endcan
             </tr>
         </thead>
         <tbody>
@@ -31,6 +35,7 @@
                     <td>{{ $habitacion->id }}</td>
                     <td>{{ $habitacion->numeroHabitacion }}</td>
                     <td>{{ $habitacion->descripcion }}</td>
+                    @can('habitacion.create')
                     <td>
                         <div class="row">
                             <div class="col-12 col-md-6">
@@ -48,6 +53,7 @@
                             </div>
                         </div>
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
                 @endif

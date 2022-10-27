@@ -7,11 +7,16 @@ use Illuminate\Http\Request;
 
 class TipoHabitacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+
+    public function __construct()
+    {
+        $this->middleware('can:habitacion.view')->only('index');
+        $this->middleware('can:habitacion.create')->only('create');
+        $this->middleware('can:habitacion.update')->only('edit');
+        $this->middleware('can:habitacion.show')->only('show');
+    }
+
     public function index()
     {
         $tipos = TipoHabitacion::all();

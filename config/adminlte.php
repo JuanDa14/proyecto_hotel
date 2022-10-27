@@ -234,27 +234,31 @@ return [
         [
             'text' => 'Reservas',
             'icon' => 'fas fa-fw fa-book',
-            'url' => 'reservas'
+            'url' => '#',
+            'can' => 'ver.dashboard',
         ],
         [
             'text' => 'Usuarios',
             'icon' => 'fas fa-fw fa-user-tie',
             'url' => 'user',
-            'can' => 'user.view'
+            'can' => 'admin.dashboard',
         ],
         [
             'text' => 'Clientes',
             'icon' => 'fas fa-fw fa-users',
-            'url' => 'clientes'
+            'url' => '#',
+            'can' => 'ver.dashboard',
         ],
         [
             'text' => 'Proovedores',
             'icon' => 'fas fa-fw fa-user',
-            'url' => 'proveedores'
+            'url' => '#',
+            'can' => 'admin.dashboard',
         ],
         [
             'text' => 'Habitaciones',
             'icon' => 'fas fa-fw fa-list',
+            'can' => 'ver.dashboard',
             'submenu' => [
                 [
                     'text' => 'Tipo Habitacion',
@@ -269,7 +273,8 @@ return [
         [
             'text'    => 'Grafico de Ventas',
             'icon'    => 'fas fa-chart-bar',
-            'url' => '#'
+            'url' => '#',
+            'can' => 'admin.dashboard',
         ],
         [
             'text' => 'Pefil de usuario',

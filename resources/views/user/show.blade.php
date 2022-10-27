@@ -3,53 +3,41 @@
 @section('title', 'Usuario')
 
 @section('content')
-<div class="row col-12">
 
-    <div class="row" style="margin-left: 7%;">
-        <div id="div1" class="col-6">
-            <div>Nombres: </div>
-            <div>Apellidos:</div>
-            <div>DNI: </div>
-            <div>Teléfono:</div>
+<section class="container-fluid pt-4">
+    <div class="row mb-4">
+        <div class="col-12 col-md-6 text-md-left">
+            <h3 class="text-gray">Usuario</h3>
         </div>
-
-        <div class="col-6">
-            <div>{{$vendedor->name}}</div>
-            <div>{{$vendedor->apellidos}}</div>
-            <div>{{$vendedor->dni}}</div>
-            <div>{{$vendedor->telefono}}</div>
+        <div class="col-12 col-md-6 text-md-right">
+            <a href="{{ route('user.index') }}"><button type="button" class="btn btn-success"><i class="fas fa-arrow-left"></i> Volver</button></a>
         </div>
     </div>
 
+    <div class="d-flex card shadow p-3" style="display: flex; justify-content: center;">
+        <div class="row mb-4">
+            <div class="col-12 col-md-6 mt-5 w-100 mx-auto text-center d-flex aling-content-center justify-content-center">
+                <img src="/img/hombre.png" alt="logo" style="width: 45%; height: 70%; ">
 
-
-    <div class="row" style="margin-left: 7%;">
-        <div id="div1" class="col-6">
-            <div>Direccion: </div>
-            <div>Genero:</div>
-            <div>Nacimiento: </div>
-            <div>Email:</div>
-        </div>
-
-        <div class="col-6">
-            <div>{{$vendedor->direccion}}</div>
-            <div>{{$vendedor->genero}}</div>
-            <div>{{$vendedor->fechanacimiento}}</div>
-            <div>{{$vendedor->email}}</div>
+            </div>
+            <div class="col-12 col-md-6 mx-auto d-flex flex-column aling-content-center">
+                <div>
+                    <h3 class="text-gray mb-3" style="font-weight: bold">Datos personales</h3>
+                </div>
+                <p class="text-gray" style="font-weight:bolder">Nombres: <span style="font-weight:normal" class="ml-2">{{$user->name}}</span> </p>
+                <p class="text-gray" style="font-weight:bolder">Apellidos: <span style="font-weight:normal" class="ml-2">{{$user->apellidos}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">DNI: <span style="font-weight:normal" class="ml-2">{{$user->dni}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">Teléfono <span style="font-weight:normal" class="ml-2">{{$user->telefono}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">Direccion: <span style="font-weight:normal" class="ml-2">{{$user->direccion}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">Genero: <span style="font-weight:normal" class="ml-2">{{$user->genero}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">Nacimiento: <span style="font-weight:normal" class="ml-2">{{$user->fechanacimiento}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">Email: <span style="font-weight:normal" class="ml-2">{{$user->email}}</span></p>
+                <p class="text-gray" style="font-weight:bolder">Estado: <span style="font-weight:normal" class="ml-2">{{$user->estado}}</span></p>
+            </div>
         </div>
     </div>
 
-    <div class="row" style="align-items: center;margin-left: 10%; text-align: center">
-        @if ($vendedor->estado == "ACTIVO")
-        <h3>Estado: ACTIVO </h3>
-        @else
-        <h3>Estado: INACTIVO </h3>
-        @endif
-    </div>
-</div>
-
-
-
+</section>
 
 @stop
 

@@ -8,11 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+    public function __construct()
+    {
+        $this->middleware('can:user.view')->only('index');
+        $this->middleware('can:user.create')->only('create');
+        $this->middleware('can:user.update')->only('edit');
+        $this->middleware('can:user.show')->only('show');
+    }
+
     public function index()
     {
         $users = DB::table("model_has_roles as m")
@@ -74,8 +79,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $vendedor = User::find($id);
-        return view('vendedor.show', compact('vendedor'));
+        $user = User::find($id);
+        return view('user.show', compact('user'));
     }
 
     /**

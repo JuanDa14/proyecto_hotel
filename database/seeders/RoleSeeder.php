@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
         $user = Role::create(['name' => 'usuario']);
         $cont = Role::create(['name' => 'contador']);
 
-        Permission::create(['name' => 'ver.dashboard'])->assignRole($admin);
+        Permission::create(['name' => 'ver.dashboard'])->assignRole([$admin, $recep, $user, $cont]);
 
         Permission::create(['name' => 'user.dashboard'])->assignRole([$admin, $user]);
         Permission::create(['name' => 'admin.dashboard'])->assignRole($admin);
@@ -27,6 +27,16 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'user.view'])->assignRole([$user, $admin]);
         Permission::create(['name' => 'user.create'])->assignRole($admin);
         Permission::create(['name' => 'user.update'])->assignRole($admin);
-        Permission::create(['name' => 'user.delete'])->assignRole($admin);
+        Permission::create(['name' => 'user.show'])->assignRole($admin);
+
+        Permission::create(['name' => 'habitacion.view'])->assignRole([$user, $admin, $recep]);
+        Permission::create(['name' => 'habitacion.create'])->assignRole($admin);
+        Permission::create(['name' => 'habitacion.update'])->assignRole($admin);
+        Permission::create(['name' => 'habitacion.show'])->assignRole($admin);
+
+        Permission::create(['name' => 'tipo_habitacion.view'])->assignRole([$user, $admin, $recep]);
+        Permission::create(['name' => 'tipo_habitacion.create'])->assignRole($admin);
+        Permission::create(['name' => 'tipo_habitacion.update'])->assignRole($admin);
+        Permission::create(['name' => 'tipo_habitacion.show'])->assignRole($admin);
     }
 }

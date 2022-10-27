@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container-fuild pt-4">
+    @can('tipo_habitacion.create')
     <div class="row mb-4">
         <div class="col-12 col-md-6 text-md-left">
             <h3 class="text-gray">Tipo de Habitaciones</h3>
@@ -12,13 +13,16 @@
             <a href="{{ route('tipoHabitaciones.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Crear tipo de habitacion</button></a>
         </div>
     </div>
+    @endcan
     <table id="datatable" class="table dt-responsive nowrap text-center" style="width:100%">
         <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Precio</th>
+                @can('tipo_habitacion.create')
                 <th scope="col">Acciones</th>
+                @endcan
             </tr>
         </thead>
         <tbody>
@@ -31,6 +35,7 @@
                     <td>{{ $tipo->id }}</td>
                     <td>{{ $tipo->descripcion }}</td>
                     <td>{{ $tipo->precio }}</td>
+                    @can('tipo_habitacion.create')
                     <td>
                         <div class="row">
                             <div class="col-12 col-md-6">
@@ -48,6 +53,7 @@
                             </div>
                         </div>
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
                 @endif
