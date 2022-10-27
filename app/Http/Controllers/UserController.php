@@ -15,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table("model_has_roles as m")->join("users as u", "u.id", "=", "m.model_id")->join("roles as r", "r.id", "=", "m.role_id")->select("u.id", "u.nombre", "u.apellidos", "u.dni", "u.email", "u.estado", "u.telefono", "u.direccion", "u.genero", "u.fechanacimiento", "r.name")->where("r.id", "!=", "1")->get();
+        $users = DB::table("model_has_roles as m")
+            ->join("users as u", "u.id", "=", "m.model_id")
+            ->join("roles as r", "r.id", "=", "m.role_id")
+            ->select("u.id", "u.name as nombre", "u.apellidos", "u.dni", "u.email", "u.estado", "u.telefono", "u.direccion", "u.genero", "u.fechanacimiento", "r.name")
+            ->where("r.id", "!=", "1")
+            ->get();
         return view('user.index', compact('users'));
     }
 
@@ -99,7 +104,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user = User::find($user->id);
-        $user->nombre = $request->txtnombres;
+        $user->name = $request->txtnombres;
         $user->apellidos = $request->txtapellidos;
         $user->telefono = $request->txttelefono;
         $user->email = $request->txtcorreo;

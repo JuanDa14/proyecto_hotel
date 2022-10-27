@@ -231,46 +231,51 @@ return [
             'icon' => 'fa fa-home',
             'can' => 'ver.dashboard',
         ],
-        // [
-        //     'text' => 'Reservas',
-        //     'icon' => 'fas fa-fw fa-book',
-        //     'url' => 'reservas'
-        // ],
+        [
+            'text' => 'Reservas',
+            'icon' => 'fas fa-fw fa-book',
+            'url' => 'reservas'
+        ],
         [
             'text' => 'Usuarios',
             'icon' => 'fas fa-fw fa-user-tie',
             'url' => 'user',
             'can' => 'user.view'
         ],
-        // [
-        //     'text' => 'Clientes',
-        //     'icon' => 'fas fa-fw fa-users',
-        //     'url' => 'clientes'
-        // ],
-        // [
-        //     'text' => 'Proovedores',
-        //     'icon' => 'fas fa-fw fa-user',
-        //     'url' => 'proveedores'
-        // ],
-        // [
-        //     'text' => 'Habitaciones',
-        //     'icon' => 'fas fa-fw fa-list',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'Tipo Habitacion',
-        //             'url' => 'tipoHabitaciones'
-        //         ],
-        //         [
-        //             'text' => 'Gestionar Habitaciones',
-        //             'url' => 'habitaciones'
-        //         ]
-        //     ]
-        // ],
-        // [
-        //     'text' => 'Pefil de usuario',
-        //     'icon' => 'fas fa-fw fa-user',
-        //     'url' => 'profile'
-        // ],
+        [
+            'text' => 'Clientes',
+            'icon' => 'fas fa-fw fa-users',
+            'url' => 'clientes'
+        ],
+        [
+            'text' => 'Proovedores',
+            'icon' => 'fas fa-fw fa-user',
+            'url' => 'proveedores'
+        ],
+        [
+            'text' => 'Habitaciones',
+            'icon' => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text' => 'Tipo Habitacion',
+                    'url' => 'tipoHabitaciones'
+                ],
+                [
+                    'text' => 'Gestionar Habitaciones',
+                    'url' => 'habitaciones'
+                ]
+            ]
+        ],
+        [
+            'text'    => 'Grafico de Ventas',
+            'icon'    => 'fas fa-chart-bar',
+            'url' => '#'
+        ],
+        [
+            'text' => 'Pefil de usuario',
+            'icon' => 'fas fa-cog',
+            'url' => 'profile'
+        ],
     ],
 
     /*

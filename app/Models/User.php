@@ -23,8 +23,15 @@ class User extends Authenticatable
     use HasRoles;
 
     protected $fillable = [
-        'name',
+        'nombre',
+        'apellidos',
+        'dni',
         'email',
+        'estado',
+        'telefono',
+        'direccion',
+        'genero',
+        'fechanacimiento',
         'password',
     ];
 
@@ -50,7 +57,6 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        
     }
 
     public function adminlte_profile_url()
