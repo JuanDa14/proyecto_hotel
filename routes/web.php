@@ -18,6 +18,7 @@ Route::get('/profile', function () {
 });
 
 Route::resource('user', UserController::class);
+Route::get('deletevendedor/{id}', [UserController::class, 'inhabilitar'])->name('inhabilitar');
 // Rutas TipoHabitacion y Habitacion
 Route::resource('tipoHabitaciones', TipoHabitacionController::class);
 Route::resource('habitaciones', HabitacionController::class);
