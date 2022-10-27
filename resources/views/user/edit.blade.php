@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col form-group">
                     <label for="name">Nombres</label>
-                    <input value="{{$user->nombre}}" required type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar nombres" name="txtnombres">
+                    <input value="{{$user->name}}" required type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar nombres" name="txtnombres">
                 </div>
 
                 <div class="col form-group">
