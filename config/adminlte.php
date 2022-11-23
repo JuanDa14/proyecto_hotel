@@ -234,7 +234,7 @@ return [
         [
             'text' => 'Reservas',
             'icon' => 'fas fa-fw fa-book',
-            'url' => '#',
+            'url' => 'reservas',
             'can' => 'ver.dashboard',
         ],
         [
@@ -246,13 +246,13 @@ return [
         [
             'text' => 'Clientes',
             'icon' => 'fas fa-fw fa-users',
-            'url' => '#',
+            'url' => 'clientes',
             'can' => 'ver.dashboard',
         ],
         [
             'text' => 'Proovedores',
             'icon' => 'fas fa-fw fa-user',
-            'url' => '#',
+            'url' => 'proveedores',
             'can' => 'admin.dashboard',
         ],
         [
