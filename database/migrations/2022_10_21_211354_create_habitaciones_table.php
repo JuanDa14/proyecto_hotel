@@ -16,6 +16,9 @@ class CreateHabitacionesTable extends Migration
         Schema::create('habitaciones', function (Blueprint $table) {
             $table->id();
             $table->integer('numeroHabitacion')->unique();
+            $table->string('piso');
+            $table->string('nroCamas');
+            $table->string('estado');
             $table->unsignedBigInteger('tipoHabitacion_id');
             $table->foreign('tipoHabitacion_id')->references('id')->on('tipo_habitaciones')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

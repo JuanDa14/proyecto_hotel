@@ -6,7 +6,7 @@
 <div class="container-fuild px-4 pt-4">
     <div class="row mb-4">
         <div class="col-12 col-md-6 text-md-left">
-            <h3 class="text-gray">Proveedor</h3>
+            <h3 class="text-gray">Editar Proveedor</h3>
         </div>
         <div class="col-12 col-md-6 text-md-right">
             <a href="{{ route('proveedores.index') }}"><button type="button" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Volver</button></a>
@@ -44,21 +44,11 @@
                     <label for="exampleInputEmail1">Numero de estrellas</label>
                     <select class="form-control" aria-label="Default select example" name="estrellas" class="form-control" required>
                         <option disabled selected value="">Seleccione la cantidad de estrellas</option>
-                        @if ($proveedor->estrellas == 1)
-                        <option selected value="1">1 estrella</option>
-                        @endif
-                        @if ($proveedor->estrellas == 2)
-                        <option selected value="2">2 estrellsa</option>
-                        @endif
-                        @if ($proveedor->estrellas == 3)
-                        <option selected value="3">3 estrellas</option>
-                        @endif
-                        @if ($proveedor->estrellas == 4)
-                        <option selected value="4">4 estrellas</option>
-                        @endif
-                        @if ($proveedor->estrellas == 5)
-                        <option selected value="5">5 estrellas</option>
-                        @endif
+                        <option value="1" @if($proveedor->estrellas == 1) selected @endif>1 estrella</option>
+                        <option value="2" @if($proveedor->estrellas == 2) selected @endif>2 estrellas</option>
+                        <option value="3" @if($proveedor->estrellas == 3) selected @endif>3 estrellas</option>
+                        <option value="4" @if($proveedor->estrellas == 4) selected @endif>4 estrellas</option>
+                        <option value="5" @if($proveedor->estrellas == 5) selected @endif>5 estrellas</option>
                     </select>
                 </div>
 

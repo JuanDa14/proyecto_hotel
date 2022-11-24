@@ -110,22 +110,25 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4 mt-4 text-center">
-                                    <button type="button" class="w-75 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#agregarcliente">Nuevo Cliente</button>
+                                    <a href="{{ route('clientes.create') }}"><button type="button" class="w-75 btn btn-secondary">Nuevo Cliente</button></a>
                                 </div>
                             </div>
                         </div>
                         <div class="divider"></div>
                         <div class=" row form-group">
                             <div class="col-12 col-md-3">
-                                <select id="idproducto" class="form-control selectpicker" data-live-search="true">
+                                <select id="idproducto" class="form-control selectpicker" data-live-search="true" onchange="agregarHabitacion()">
                                     <option selected disabled value="0">Seleccione una habitacion</option>
                                     @foreach ($habitaciones as $habitacion)
-                                    <option value="{{ $habitacion->id }}_{{ $habitacion->descripcion }}">
-                                        {{ $habitacion->descripcion }}
+                                    <option value="{{ $habitacion->id }}_{{ $habitacion->descripcion }}_{{ $habitacion->precio }}_{{ $habitacion->disponible }}">
+                                        {{ $habitacion->numeroHabitacion }}
                                     </option>
                                     @endforeach
                                 </select>
 
+                                @foreach ($habitaciones as $habitacion)
+                                <input type="hidden" value="{{ $habitacion->disponible }}" id="idcantidad{{ $habitacion->id }}">
+                                @endforeach
                             </div>
                             <div class="col-12 col-md-2">
                                 <input id="txtprecio" disabled type="number" class="form-control mr-lg-5" name="txtprecio" placeholder="Precio" required>
@@ -135,15 +138,15 @@
                                 <input id="idcantidad" type="number" class="form-control mr-lg-5" name="txtcantidad" placeholder="Cantidad">
                             </div>
 
-                            <div class="col-12 col-md-1 pr-4">
+                            <!-- <div class="col-12 col-md-1 pr-4">
                                 <button type="button" style="background-color: #EC7063" class="w-100 btn text-white " data-bs-toggle="modal" data-bs-target="#agregarproducto"><i class="fas fa-plus"></i></button>
-                            </div>
+                            </div> -->
 
                             <div class="col-12 col-md-2">
-                                <button id="idlimpiar" type="button" class="w-100 btn btn-primary" onclick="limpiar()">Nueva</button>
+                                <button id="idlimpiar" type="button" class="w-100 btn btn-primary" onclick="limpiar()">Limpiar</button>
                             </div>
 
-                            <div class="col-12 col-md-2">
+                            <div class="col-12 col-md-3">
                                 <button id="idlimpiar" type="button" class="btn btn-success w-100" onclick=" agregarProducto()">Agregar</button>
                             </div>
                         </div>
@@ -190,20 +193,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
 </script>
 <script>
-    setTimeout(() => {
-        document.getElementById("liveAlert").remove();
-    }, 3000);
-    setTimeout(() => {
-        document.getElementById("liveAlert2").remove();
-    }, 3000);
+    if (document.getElementById("liveAlert")) {
+        setTimeout(() => {
+            document.getElementById("liveAlert").remove();
+        }, 3000);
+    }
+
+    if (document.getElementById("liveAlert2")) {
+        setTimeout(() => {
+            document.getElementById("liveAlert2").remove();
+        }, 3000);
+    }
 </script>
-<script src="/js/venta.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $('.realizar').submit(function(e) {
         e.preventDefault();
         Swal.fire({
-            title: 'Realizar venta?',
+            title: 'Realizar reserva?',
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -216,5 +223,176 @@
             }
         })
     });
+</script>
+
+<script>
+    const agregarEmpleado = () => {
+        const empleado = document.getElementById("idempleado").value.split("_");
+        const nombre = document.getElementById("idNombreVendedor");
+        const apellidos = document.getElementById("idApellidosVendedor");
+        const dni = document.getElementById("idDniVendedor");
+        nombre.value = empleado[1];
+        apellidos.value = empleado[2];
+        dni.value = empleado[3];
+        return null;
+    };
+
+    const agregarCliente = () => {
+        const dni = document.getElementById("iddni").value.split("_");
+        const cliente = document.getElementById("idcliente");
+        cliente.value = dni[1];
+        return null;
+    };
+
+    const agregarHabitacion = () => {
+        const habitacion = document.getElementById("idproducto").value.split("_");
+        const precio = document.getElementById("txtprecio");
+        precio.value = habitacion[2];
+        return null;
+    };
+
+    const verificarEmpleado = document.getElementById("idverificarEmpleado");
+    const verificarCliente = document.getElementById("idverificarCliente");
+    const tipoPago = document.getElementById("idtipoPago");
+    const boton = document.querySelector(".card-footer button");
+    const tabla = document.getElementById("detalle");
+    const cantidadtotal = document.getElementById("idcantidad");
+    let inputcantidad;
+    let productoRepetido = [];
+    let cantidadProducto = [];
+    let precioProducto = [];
+    let indice = 0;
+    let total = 0.0;
+    let i = 0;
+    let k = 0;
+    let cantidadAnterior = 0;
+
+    const agregarProducto = () => {
+        const precio = document.getElementById("txtprecio").value;
+        const datosProducto = document
+            .getElementById("idproducto")
+            .value.split("_");
+        const datosEmpleado = document
+            .getElementById("idempleado")
+            .value.split("_");
+        const datosCliente = document.getElementById("iddni").value.split("_");
+        const tipoPago = document.getElementById("idtipoPago").value.trim();
+        const dni = datosCliente[2];
+        if (
+            datosEmpleado[1] == null ||
+            datosProducto[1] == null ||
+            cantidadtotal.value <= 0 ||
+            tipoPago == 0
+        )
+            return Swal.fire("Hubo un error!", "Aún hay campos vacios", "error");
+
+        indice++;
+
+        if (indice == 1) {
+            verificarEmpleado.value = datosEmpleado[1];
+            verificarCliente.value = datosCliente[1];
+        }
+        if (datosEmpleado[1] != verificarEmpleado.value && indice > 1)
+            return Swal.fire(
+                "Hubo un problema!",
+                "El vendedor no coincide con el seleccionado",
+                "info"
+            );
+
+        if (datosCliente[1] != verificarCliente.value && indice > 1)
+            return Swal.fire(
+                "Hubo un problema!",
+                "El cliente ha sido modificado",
+                "info"
+            );
+
+        for (let j = 0; j < productoRepetido.length; j++) {
+            if (productoRepetido[j] == datosProducto[1]) {
+                boton.classList.remove("disabled");
+                cantidadAnterior = cantidadProducto[j];
+                total -=
+                    parseFloat(precioProducto[j]) * parseFloat(cantidadAnterior);
+                cantidadAnterior =
+                    parseInt(cantidadAnterior) + parseInt(cantidadtotal.value);
+                cantidadProducto[j] = cantidadAnterior;
+                total +=
+                    parseFloat(precioProducto[j]) * parseFloat(cantidadAnterior);
+
+                localStorage.setItem("cr", cantidadProducto);
+                document.getElementById("idtotal").textContent = total.toFixed(2);
+                document.getElementById(`idcantidad${datosProducto[0]}`).value -=
+                    parseInt(cantidadtotal.value);
+                document.getElementById("idquitar" + j).innerHTML =
+                    '<a class="btn btn-danger" onclick="quitar(' +
+                    j +
+                    "," +
+                    datosProducto[0] +
+                    "," +
+                    precio +
+                    "," +
+                    cantidadProducto[j] +
+                    ')">Quitar</a>';
+                document.getElementById("idArrayCantidad" + j).value =
+                    cantidadAnterior;
+                document.getElementById("idTdCantidad" + j).textContent =
+                    cantidadProducto[j];
+
+                return localStorage.setItem(
+                    "fila" + j,
+                    document.getElementById("fila" + j)
+                );
+            }
+        }
+
+        if (precio <= 0)
+            return Swal.fire(
+                "Hubo un problema!",
+                "Por favor Ingrese el precio",
+                "info"
+            );
+
+        cantidadProducto[k] = cantidadtotal.value;
+        fila = `<tr id = "fila${i}"><td>
+                    ${datosEmpleado[1]}</td><input type="hidden" name="vendedor" value="${datosEmpleado[0]}"><td>
+                    ${datosCliente[1]}</td><input type="hidden" name="cliente" value="${datosCliente[0]}"><td>
+                    ${datosProducto[1]}</td><input type="hidden" name="idproductos[]" value="${datosProducto[0]}">
+                    <td>${precio}</td><td id= "idTdCantidad${k}">${cantidadProducto[k]}</td><td id="idquitar${i}">
+                    <a class = "btn btn-danger" onclick="quitar(${i},${datosProducto[0]},${precio},${cantidadProducto[k]})">Quitar</a></td>
+                    <input id="idArrayCantidad${k}" type="hidden" name="cantidades[]" value="${cantidadProducto[k]}">
+                    <input type="hidden" name="precios[]" value="${precio}"><input type="hidden" name="dni" value="${dni}"></tr>`;
+
+        productoRepetido[i] = datosProducto[1];
+        precioProducto[i] = precio;
+        i++;
+        inputcantidad = document.getElementById("idcantidad" + datosProducto[0]);
+        inputcantidad.value -= parseFloat(cantidadProducto[k]);
+        boton.classList.remove("disabled");
+        tabla.innerHTML += fila;
+        total += parseFloat(precio) * cantidadProducto[k];
+        document.getElementById("idtotal").textContent = total.toFixed(2);
+        k++;
+
+    };
+
+    const quitar = (id, idcantidad, precio, cantidad) => {
+        delete productoRepetido[id];
+        delete cantidadProducto[id];
+
+        localStorage.removeItem("fila" + id);
+        document.getElementById("fila" + id).remove();
+
+        total -= parseFloat(precio) * parseFloat(cantidad);
+        document.getElementById("idtotal").innerHTML = total.toFixed(2);
+        localStorage.setItem("t", document.getElementById("idtotal").textContent);
+        if (JSON.parse(localStorage.getItem("t")) === -0.0) {
+            localStorage.setItem("t", 0);
+            document.getElementById("idtotal").textContent = 0;
+        }
+    };
+
+    const limpiar = () => {
+        localStorage.clear();
+        location.reload();
+    }
 </script>
 @stop

@@ -24,7 +24,9 @@
                     <th>ID</th>
                     <th>Dni</th>
                     <th>Nombre</th>
+                    <th>Genero</th>
                     <th>Teléfono</th>
+                    <th>Direccion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -34,23 +36,22 @@
                 <tr>
                     <td>{{$c->id}}</td>
                     <td>{{$c->dni}}</td>
-                    <td class="col-2">{{$c->nombres}}</td>
+                    <td>{{$c->nombres}}</td>
+                    <td>{{$c->genero}}</td>
                     <td>{{$c->telefono}}</td>
-                    //TODO
-                    <!-- @can('user.create') -->
-                    <td style="text-align: center;display: flex;align-items: center;">
-                        <form action="{{route('clientes.edit',$c->id)}}" method="get" class="elimina">
+                    <td>{{$c->direccion}}</td>
+                    <!-- //TODO agregar can -->
+                    <td style="text-align: center" class="d-flex justify-content-between">
+                        <form action="{{route('clientes.edit',$c->id)}}" method="get">
                             @csrf
                             <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i></button>
                         </form>
-                        <form action="{{route('clientes.show',$c->id)}}" method="get">
+                        <form action="{{route('clientes.destroy',$c->id)}}" method="post" class="eliminar">
+                            @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-destroy"></i></button>
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
-
-                    <!-- @endcan -->
-
                 </tr>
                 @endforeach
             </tbody>
@@ -78,27 +79,10 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    $('.inabilitar-proveedor').submit(function(e) {
+    $('.eliminar').submit(function(e) {
         e.preventDefault();
         Swal.fire({
-            title: 'Inabilitar al proveedor?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si!',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
-        })
-    });
-
-    $('.habilitar-proveedor').submit(function(e) {
-        e.preventDefault();
-        Swal.fire({
-            title: 'Habilitar al proveedor?',
+            title: 'Eliminar al cliente?',
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
