@@ -121,7 +121,7 @@
                                     <option selected disabled value="0">Seleccione una habitacion</option>
                                     @foreach ($habitaciones as $habitacion)
                                     <option value="{{ $habitacion->id }}_{{ $habitacion->descripcion }}_{{ $habitacion->precio }}_{{ $habitacion->disponible }}">
-                                        {{ $habitacion->descripcion }}
+                                        {{ $habitacion->numeroHabitacion }}
                                     </option>
                                     @endforeach
                                 </select>
