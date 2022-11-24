@@ -17,6 +17,7 @@ class CreateTipoHabitacionesTable extends Migration
             $table->id();
             $table->decimal('precio');
             $table->string('descripcion')->unique();
+            $table->integer('disponible');
             $table->timestamps();
         });
     }

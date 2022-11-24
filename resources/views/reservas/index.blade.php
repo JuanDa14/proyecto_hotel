@@ -35,17 +35,16 @@
                 <tr>
                     <td>{{$r->id}}</td>
                     <td>{{$r->fecha}}</td>
-                    <td>{{$r->name}}</td>
-                    <td>{{$p->nombres}}</td>
-                    <td>{{$p->tipoPago}}</td>
+                    <td>{{$r->name}} {{$r->apellidos}}</td>
+                    <td>{{$r->nombres}}</td>
+                    <td>{{$r->tipoPago}}</td>
 
-                    //TODO
-                    <!-- @can('user.create') -->
+                    <!-- //TODO agregar can -->
 
-                    <td style="text-align: center">
+                    <td style="text-align: center;display: flex;" class="d-flex justify-content-between">
                         <form action="{{route('reservas.edit',$r->id)}}" method="get">
                             @csrf
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-download"></i></button>
                         </form>
                         <form action="{{route('reservas.show',$r->id)}}" method="get">
                             @csrf
@@ -53,7 +52,6 @@
                         </form>
                     </td>
 
-                    <!-- @endcan -->
 
                 </tr>
                 @endforeach

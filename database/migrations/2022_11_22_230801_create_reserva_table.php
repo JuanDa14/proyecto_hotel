@@ -16,7 +16,7 @@ class CreateReservaTable extends Migration
         Schema::create('reserva', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
-            $table->string('estado');
+            $table->enum('estado', ['VALIDA', 'CANCELADA']);
             $table->foreignId('idcliente')->references('id')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('iduser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('tipoPago', ['EFECTIVO', 'TARJETA']);

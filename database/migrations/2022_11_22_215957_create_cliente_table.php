@@ -17,7 +17,9 @@ class CreateClienteTable extends Migration
             $table->id();
             $table->integer('dni');
             $table->string('nombres');
+            $table->string('direccion');
             $table->string('telefono');
+            $table->enum('genero', ['M', 'F']);
             $table->timestamps();
         });
     }

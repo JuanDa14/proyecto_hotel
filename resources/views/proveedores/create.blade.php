@@ -8,7 +8,7 @@
 <div class="container-fuild px-4 pt-4">
     <div class="row mb-4">
         <div class="col-12 col-md-6 text-md-left">
-            <h3 class="text-red-500">Nuevo Provedor</h3>
+            <h3 class="text-red-500">Nuevo Proveedor</h3>
         </div>
         <div class="col-12 col-md-6 text-md-right">
             <a href="{{ route('proveedores.index') }}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Volver</button></a>

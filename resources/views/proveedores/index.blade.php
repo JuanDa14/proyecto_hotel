@@ -28,6 +28,7 @@
                     <th>Correo electrónico</th>
                     <th>Estado</th>
                     <th>Estrellas</th>
+                    <!-- //TODO -->
                     <!-- @can('user.create') -->
                     <th style="text-align: center">I/H</th>
                     <th style="text-align: center">Editar</th>
@@ -52,20 +53,21 @@
                         @endif
                     </td>
                     <td>{{$p->estrellas}}</td>
-                    //TODO
+                    <!-- //TODO agregar can -->
                     <!-- @can('user.create') -->
                     <td style="text-align: center">
                         <form action="{{route('inhabilitar-proveedor',$p->id)}}" method="get" class="inabilitar-proveedor">
                             @if ($p->estado ==1)
-                            <button type="submit" class="btn btn-secondary">Inh</button>
+                            <button type="submit" class="btn btn-danger">Inh</button>
                             @endif
                         </form>
                         <form action="{{route('habilitar-proveedor',$p->id)}}" method="get" class="habilitar-proveedor">
                             @if ($p->estado ==0)
-                            <button type="submit" class="btn btn-secondary">Hab</button>
+                            <button type="submit" class="btn btn-success">Hab</button>
                             @endif
                         </form>
                     </td>
+                    @if ($p->estado == 1)
                     <td style="text-align: center">
                         <form action="{{route('proveedores.edit',$p->id)}}" method="get">
                             @csrf
@@ -79,6 +81,22 @@
                             <button type="submit" class="btn btn-info"><i class="fas fa-info"></i></button>
                         </form>
                     </td>
+                    @endif
+                    @if ($p->estado == 0)
+                    <td style="text-align: center">
+                        <form action="{{route('proveedores.edit',$p->id)}}" method="get">
+                            @csrf
+                            <button type="submit" class="btn btn-primary" disabled><i class="fas fa-edit"></i></button>
+                        </form>
+                    </td>
+
+                    <td style="text-align: center">
+                        <form action="{{route('proveedores.show',$p->id)}}" method="get">
+                            @csrf
+                            <button type="submit" class="btn btn-info" disabled><i class="fas fa-info"></i></button>
+                        </form>
+                    </td>
+                    @endif
                     <!-- @endcan -->
 
                 </tr>

@@ -12,19 +12,27 @@ class TipoHabitacionSeeder extends Seeder
     {
         TipoHabitacion::create([
             'descripcion' => 'Familiar',
-            'precio' => 320
+            'precio' => 320,
+            'disponible' => 5,
+
         ]);
         TipoHabitacion::create([
             'descripcion' => 'Doble',
-            'precio' => 120
+            'precio' => 120,
+            'disponible' => 5,
+
         ]);
         TipoHabitacion::create([
             'descripcion' => 'Matrimonial',
-            'precio' => 250
+            'precio' => 250,
+            'disponible' => 5,
+
         ]);
         TipoHabitacion::create([
             'descripcion' => 'Individual',
-            'precio' => 50
+            'precio' => 50,
+            'disponible' => 5,
+
         ]);
     }
 }
