@@ -23,69 +23,54 @@ class TipoHabitacionController extends Controller
         return view('tipoHabitacion.index', compact('tipos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('tipoHabitacion.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'descripcion' => 'required',
+            'precio' => 'required'
+        ]);
+        $tipo = new TipoHabitacion();
+        $tipo->precio = $request->precio;
+        $tipo->descripcion = $request->descripcion;
+        $tipo->save();
+
+        return redirect()->route('tipoHabitaciones.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $tipos = TipoHabitacion::all();
+        $tipo = $tipos->find($id);
+        return view('tipoHabitacion.edit', compact('tipo'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'descripcion' => 'required',
+            'precio' => 'required'
+        ]);
+        $tipos = TipoHabitacion::all();
+        $updated = $tipos->find($id);
+        $updated->update($request->all());
+        return redirect()->route('tipoHabitaciones.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $tipos = TipoHabitacion::all();
+        $deleted = $tipos->find($id);
+        $deleted->delete();
+        return redirect()->route('tipoHabitaciones.index');
     }
 }

@@ -10,7 +10,7 @@
         </div>
         @can('habitacion.create')
         <div class="col-12 col-md-6 text-md-right">
-            <a href="{{ route('tipoHabitaciones.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Crear tipo de habitacion</button></a>
+            <a href="{{ route('habitaciones.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Crear tipo de habitacion</button></a>
         </div>
         @endcan
     </div>
@@ -21,7 +21,7 @@
                 <th scope="col">Numero Habitacion</th>
                 <th scope="col">Tipo</th>
                 @can('habitacion.create')
-                <th scope="col">Acciones</th>
+                <th scope="col">Opciones</th>
                 @endcan
             </tr>
         </thead>
@@ -38,18 +38,20 @@
                     @can('habitacion.create')
                     <td>
                         <div class="row">
-                            <div class="col-12 col-md-6">
-                                <form action="" method="get">
-                                    @csrf
+                            <div class="col-12 col-md-4">
+                                <form action="{{ route('habitaciones.edit', $habitacion->id) }}" method="get">
                                     <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i></button>
                                 </form>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <form action="" method="post" class="eliminar">
+                            <div class="col-12 col-md-4">
+                                <form action="{{ route('habitaciones.destroy', $habitacion->id) }}" method="post" class="eliminar">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="{{ route('habitaciones.show', $habitacion->id) }}" class="btn btn-secondary">Ver servicios<i class="fas fa-info ml-2"></i></a>
                             </div>
                         </div>
                     </td>

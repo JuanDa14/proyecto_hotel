@@ -39,13 +39,18 @@
                     <td>
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <form action="" method="get">
-                                    @csrf
+                                <form action="{{ route('tipoHabitaciones.edit', $tipo->id) }}"
+                                    method="get"
+                                    class="form-edit"
+                                    >
                                     <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i></button>
                                 </form>
                             </div>
                             <div class="col-12 col-md-6">
-                                <form action="" method="post" class="eliminar">
+                                <form action="{{ route('tipoHabitaciones.destroy', $tipo->id) }}"
+                                    method="post"
+                                    class="form-delete"
+                                    >
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -76,4 +81,6 @@
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
 <script src="/js/dataTable.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/t-servicios.js"></script>
 @stop

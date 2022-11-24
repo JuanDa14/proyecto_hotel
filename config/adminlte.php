@@ -267,6 +267,10 @@ return [
                 [
                     'text' => 'Gestionar Habitaciones',
                     'url' => 'habitaciones'
+                ],
+                [
+                    'text' => 'Servicios Adicionales',
+                    'url' => 'servicios'
                 ]
             ]
         ],
