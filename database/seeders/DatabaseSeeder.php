@@ -12,7 +12,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             TipoHabitacionSeeder::class,
-            HabitacionSeeder::class
+            HabitacionSeeder::class,
+            ClienteSeeder::class,
+            ProveedorSeeder::class,
+            ReservaSeeder::class,
+            DetalleReservaSeeder::class,
         ]);
     }
 }

@@ -42,12 +42,16 @@ class ClienteController extends Controller
             'dni' => 'required',
             'nombres' => 'required',
             'telefono' => 'required',
+            'direccion' => 'required',
+            'genero' => 'required',
         ]);
 
         $cliente = new Cliente();
         $cliente->dni = $request->dni;
         $cliente->nombres = $request->nombres;
         $cliente->telefono = $request->telefono;
+        $cliente->direccion = $request->direccion;
+        $cliente->genero = $request->genero;
         $cliente->save();
 
         return redirect()->route('clientes.index');
@@ -72,7 +76,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -84,7 +89,23 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'dni' => 'required',
+            'nombres' => 'required',
+            'telefono' => 'required',
+            'direccion' => 'required',
+            'genero' => 'required',
+        ]);
+
+        $cliente = Cliente::find($id);
+        $cliente->dni = $request->dni;
+        $cliente->nombres = $request->nombres;
+        $cliente->telefono = $request->telefono;
+        $cliente->direccion = $request->direccion;
+        $cliente->genero = $request->genero;
+        $cliente->save();
+
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -95,6 +116,9 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+
+        return redirect()->route('clientes.index');
     }
 }
