@@ -19,7 +19,7 @@ class CreateReservaTable extends Migration
             $table->enum('estado', ['VALIDA', 'CANCELADA']);
             $table->foreignId('idcliente')->references('id')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('iduser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('tipoPago', ['EFECTIVO', 'TARJETA']);
+            $table->foreignId('idtipopago')->references('id')->on('tipo_pagos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -26,7 +26,8 @@ class ReservaController extends Controller
         $reservas = DB::table('reserva as r')
             ->join('users as u', 'u.id', '=', 'r.iduser')
             ->join('cliente as c', 'c.id', '=', 'r.idcliente')
-            ->select('c.nombres', 'u.name', 'u.apellidos', 'r.id', 'r.fecha', 'r.tipoPago')->get();
+            ->join('tipo_pagos as tp', 'tp.descripcion', '=', 'r.idtipopago')
+            ->select('c.nombres', 'u.name', 'u.apellidos', 'r.id', 'r.fecha', 'tp.descripcion')->get();
         return view('reservas.index', compact('reservas'));
     }
 

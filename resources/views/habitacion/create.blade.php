@@ -22,6 +22,7 @@
                     <div class="row">
                         <div class="col-6 col-md-4 form-group">
                             <label for="nro">Nro Habitación</label>
+                            {{-- <input required type="text" class="form-control" id="nro" placeholder="Ingrese el nro habitación" value="{{ $numero + 1 }}" name="nro" readonly> --}}
                             <input required type="text" class="form-control" id="nro" placeholder="Ingrese el nro habitación" name="nro">
                         </div>
                         <div class="col-6 col-md-4 form-group">

@@ -22,12 +22,16 @@ const funServicio = () => {
                     <label>${ descServicio }</label>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" onclick="removeRow()">X</button>
+                    <button type="button" class="btn btn-danger" onclick="removeRow(${indice})">X</button>
                 </td>
     `
     indice++
 
     table.innerHTML+=row
+}
+
+const removeRow = (i) => {
+    document.getElementById('fila'+i).remove()
 }
 
 const btnAdd = document.getElementById('addservicio')
