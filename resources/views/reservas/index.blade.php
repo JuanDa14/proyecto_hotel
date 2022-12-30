@@ -37,7 +37,7 @@
                     <td>{{$r->fecha}}</td>
                     <td>{{$r->name}} {{$r->apellidos}}</td>
                     <td>{{$r->nombres}}</td>
-                    <td>{{$r->tipoPago}}</td>
+                    {{-- <td>{{$r->tipoPago}}</td> --}}
 
                     <!-- //TODO agregar can -->
 
