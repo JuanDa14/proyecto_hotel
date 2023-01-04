@@ -21,7 +21,7 @@ const data = {
     labels: labels,
     datasets: [
         {
-            label: "Ventas realizadas por mes",
+            label: "Reservas realizadas por mes - 2023",
             backgroundColor: "rgb(255, 99, 132)",
             borderColor: "rgb(255, 99, 132)",
             data: arrayData,

@@ -275,9 +275,9 @@ return [
             ]
         ],
         [
-            'text'    => 'Grafico de Ventas',
+            'text'    => 'Grafico de Reservas',
             'icon'    => 'fas fa-chart-bar',
-            'url' => '#',
+            'url' => 'grafico',
             'can' => 'admin.dashboard',
         ],
         [

@@ -16,6 +16,6 @@ class Reserva extends Model
         'estado',
         'idcliente',
         'iduser',
-        'tipoPago',
+        'idtipopago',
     ];
 }

@@ -68,9 +68,10 @@
                                 <div class="col-12 col-md-6">
                                     <p class="h6">Tipo de Pago :</p>
                                     <select class="form-control " id="idtipoPago" name="tipoPago">
-                                        <option selected disabled value="0">Seleccione el tipo de pago</option>
-                                        <option value="EFECTIVO">Efectivo</option>
-                                        <option value="TARJETA">Tarjeta</option>
+                                        <option selected disabled>Seleccione el tipo de pago</option>
+                                        @foreach ($tipos as $item)
+                                        <option value="{{ $item->id }}">{{ $item->descripcion }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

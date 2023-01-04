@@ -25,7 +25,6 @@
                     <td scope="col">Fecha</td>
                     <td scope="col">Vendedor</td>
                     <td scope="col">Cliente</td>
-                    <td scope="col">Tipo de Pago</td>
                     <td scope="col">Acciones</td>
                 </tr>
             </thead>

@@ -18,23 +18,36 @@
         <div class="card">
             <div class="card-body">
                 <div class="row container">
-                    <label class="col-3">Nro Habitación</label>
-                    <span>{{ $habitacion->numeroHabitacion }}</span>
+                    <div class="col-12 col-md-4">
+                        <label class="col-6">Nro Habitación</label>
+                        <span>{{ $habitacion->numeroHabitacion }}</span>
+                    </div>
 
-                    <label class="col-3">Nro de Camas</label>
-                    <span>{{ $habitacion->nroCamas }}</span>
+                    <div class="col-12 col-md-4">
+                        <label class="col-6">Nro de Camas</label>
+                        <span>{{ $habitacion->nroCamas }}</span>
+                    </div>
 
-                    <label class="col-3">Precio</label>
-                    {{-- <span>{{ $habitacion-> }}</span> --}}
-                    <label class="col-3">Estado</label>
-                    <span>{{ $habitacion->estado }}</span>
-                    <label>Tipo de Habitación</label>
-                    <span>{{ $tipoH->descripcion }}</span>
+                    <div class="col-12 col-md-4">
+                        <label class="col-6">Precio</label>
+                        <span>{{ $tipoP->precio }}</span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="col-6">Estado</label>
+                        <span>{{ $habitacion->estado }}</span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="col-6">Tipo de Habitación</label>
+                        <span>{{ $tipoH->descripcion }}</span>
+                    </div>
+
                     
-                    <h5 class="col-12">Servicios adicionales</h5>
-                    <table class="table text-center">
+                    <h5 class="col-12 mt-2">Servicios adicionales</h5>
+                    <table class="table text-center mt-1">
                         <thead>
-                            <th>Servicio</th>
+                            <th>Servicios</th>
                         </thead>
                         <tbody>
                             @for ($i = 0; $i < count($servicios); $i++)
