@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reserva extends Model
+class TipoPago extends Model
 {
     use HasFactory;
 
-    protected $table = 'reserva';
+    protected $table = "tipo_pagos";
 
     protected $fillable = [
-        'fecha',
-        'estado',
-        'idcliente',
-        'iduser',
-        'idtipopago',
+        'descripcion'
     ];
 }

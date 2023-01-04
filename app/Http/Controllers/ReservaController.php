@@ -8,6 +8,7 @@ use App\Models\DetalleReserva;
 use App\Models\Habitacion;
 use App\Models\Reserva;
 use App\Models\TipoHabitacion;
+use App\Models\TipoPago;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,8 @@ class ReservaController extends Controller
         $reservas = DB::table('reserva as r')
             ->join('users as u', 'u.id', '=', 'r.iduser')
             ->join('cliente as c', 'c.id', '=', 'r.idcliente')
-            ->select('c.nombres', 'u.name', 'u.apellidos', 'r.id', 'r.fecha', 'r.tipoPago')->get();
+            // ->join('tipo_pagos as tp', 'tp.descripcion', '=', 'r.idtipopago')
+            ->select('c.nombres', 'u.name', 'u.apellidos', 'r.id', 'r.fecha')->get();
         return view('reservas.index', compact('reservas'));
     }
 
@@ -39,8 +41,9 @@ class ReservaController extends Controller
     {
         $vendedores = User::all();
         $clientes = Cliente::all();
+        $tipos = TipoPago::all();
         $habitaciones = DB::table('habitaciones as h')->join('tipo_habitaciones as t', 'h.tipoHabitacion_id', '=', 't.id')->select('h.id', 'h.numeroHabitacion', 't.descripcion', 't.precio', 't.disponible')->get();
-        return view('reservas.create', compact('vendedores', 'clientes', 'habitaciones'));
+        return view('reservas.create', compact('vendedores', 'clientes', 'habitaciones', 'tipos'));
     }
 
     /**
@@ -58,7 +61,7 @@ class ReservaController extends Controller
         $reserva->estado = 'VALIDA';
         $reserva->idcliente = $cliente[0]->id;
         $reserva->iduser = $request->vendedor;
-        $reserva->tipoPago = $request->tipoPago;
+        $reserva->idtipopago = $request->tipoPago;
         $reserva->save();
 
         for ($i = 0; $i < $tamaño; $i++) {

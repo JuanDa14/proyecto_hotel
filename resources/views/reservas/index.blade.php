@@ -25,7 +25,6 @@
                     <td scope="col">Fecha</td>
                     <td scope="col">Vendedor</td>
                     <td scope="col">Cliente</td>
-                    <td scope="col">Tipo de Pago</td>
                     <td scope="col">Acciones</td>
                 </tr>
             </thead>
@@ -37,7 +36,7 @@
                     <td>{{$r->fecha}}</td>
                     <td>{{$r->name}} {{$r->apellidos}}</td>
                     <td>{{$r->nombres}}</td>
-                    <td>{{$r->tipoPago}}</td>
+                    {{-- <td>{{$r->tipoPago}}</td> --}}
 
                     <!-- //TODO agregar can -->
 

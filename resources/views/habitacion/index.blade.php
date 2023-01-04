@@ -10,7 +10,7 @@
         </div>
         @can('habitacion.create')
         <div class="col-12 col-md-6 text-md-right">
-            <a href="{{ route('habitaciones.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Crear tipo de habitacion</button></a>
+            <a href="{{ route('habitaciones.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Registrar habitacion</button></a>
         </div>
         @endcan
     </div>

@@ -38,7 +38,9 @@ class HabitacionController extends Controller
     {
         $tipos = TipoHabitacion::all();
         $servicios = Service::all();
-        return view('habitacion.create', compact('tipos', 'servicios'));
+        $numero = DB::table('habitaciones')
+                        ->max('numeroHabitacion');
+        return view('habitacion.create', compact('tipos', 'servicios', 'numero'));
     }
 
     public function store(Request $request)
@@ -65,12 +67,6 @@ class HabitacionController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $habitaciones = Habitacion::all();
@@ -81,11 +77,24 @@ class HabitacionController extends Controller
             ->where('id', '=', $habitacion->tipoHabitacion_id)
             ->get();
 
+        $prec = DB::table('tipo_habitaciones as h')
+            ->select('h.precio')
+            ->where('id', '=', $habitacion->tipoHabitacion_id)
+            ->get();
+
         $tipoH = null;
+        $tipoP = null; 
 
         for ($i=0; $i < count($tipo); $i++) { 
             $tipoH = $tipo[$i];
         }
+
+        for ($i=0; $i < count($tipo); $i++) { 
+            $tipoP = $prec[$i];
+        }
+
+        // dd($tipoH);
+
         
         $detalleAll = DetalleServicio::where('habitacion_id',$id)->get();
 
@@ -98,32 +107,55 @@ class HabitacionController extends Controller
             $index++;
         }
 
-        return view('habitacion.show', compact('habitacion', 'servicios', 'tipoH'));
+        return view('habitacion.show', compact('habitacion', 'servicios', 'tipoH', 'tipoP'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $habitaciones = Habitacion::all();
+        $tipos = TipoHabitacion::all();
+        $servicios = Service::all();
         $habitacion = $habitaciones->find($id);
-        dd($habitacion);
+
+        $detalles = DetalleServicio::where('habitacion_id', $id)->get();
+        // dd($detalles);
+        $servicios = [];
+        $ids = [];
+        $index = 0;
+
+        foreach ($detalles as $item) {
+            $servicio = Service::find($item->service_id);
+            // $ids[$index] = $servicio->id;
+            $servicios[$index] = $servicio;
+            $index++;
+        }
+        // dd($servicios);
+
+        return view('habitacion.edit', compact('habitacion', 'tipos', 'servicios', 'detalles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $habitaciones = Habitacion::all();
+        $habitacion = $habitaciones->find($id);
+        // dd($habitacion);
+        $habitacion->update($request->all());
+
+        // eliminar el detalle servicio
+        $aux = DB::table('detalle_servicios')->where('habitacion_id',$id)->delete();
+
+
+        $tam = count($request->servicios);
+        
+        for ($i=0; $i < $tam; $i++) { 
+            $detalle = new DetalleServicio();
+            $detalle->habitacion_id = $habitacion->id;
+            $detalle->service_id = $request->servicios[$i];
+            $detalle->save();
+        }
+
+        return redirect()->route('habitaciones.index');
     }
 
     /**

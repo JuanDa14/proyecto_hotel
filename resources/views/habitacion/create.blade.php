@@ -22,7 +22,9 @@
                     <div class="row">
                         <div class="col-6 col-md-4 form-group">
                             <label for="nro">Nro Habitación</label>
-                            <input required type="text" class="form-control" id="nro" placeholder="Ingrese el nro habitación" name="nro">
+                            <input type="hidden" id="nroa" value="{{ $numero + 1 }}">
+                            <input required type="text" class="form-control" id="nro" placeholder="Nro habitación" name="nro" readonly>
+                            <button class="btn btn-secondary btn-sm mt-1" id="btn_generar" type="button">Generar</button>
                         </div>
                         <div class="col-6 col-md-4 form-group">
                             <label for="piso">Nro Piso</label>
@@ -80,5 +82,6 @@
 @stop
 
 @section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/addservicios.js"></script>
 @stop
