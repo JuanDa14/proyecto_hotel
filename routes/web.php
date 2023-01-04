@@ -38,3 +38,5 @@ Route::resource('clientes', ClienteController::class);
 //Reservas
 Route::resource('reservas', ReservaController::class);
 Route::get('reservas/imprimir/{id}', [ReservaController::class, 'imprimir'])->name('imprimir-reserva');
+
+Route::get('grafico/', [DashboardController::class, 'grafico'])->name('grafico');

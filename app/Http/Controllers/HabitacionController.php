@@ -77,11 +77,24 @@ class HabitacionController extends Controller
             ->where('id', '=', $habitacion->tipoHabitacion_id)
             ->get();
 
+        $prec = DB::table('tipo_habitaciones as h')
+            ->select('h.precio')
+            ->where('id', '=', $habitacion->tipoHabitacion_id)
+            ->get();
+
         $tipoH = null;
+        $tipoP = null; 
 
         for ($i=0; $i < count($tipo); $i++) { 
             $tipoH = $tipo[$i];
         }
+
+        for ($i=0; $i < count($tipo); $i++) { 
+            $tipoP = $prec[$i];
+        }
+
+        // dd($tipoH);
+
         
         $detalleAll = DetalleServicio::where('habitacion_id',$id)->get();
 
@@ -94,7 +107,7 @@ class HabitacionController extends Controller
             $index++;
         }
 
-        return view('habitacion.show', compact('habitacion', 'servicios', 'tipoH'));
+        return view('habitacion.show', compact('habitacion', 'servicios', 'tipoH', 'tipoP'));
     }
 
     public function edit($id)
