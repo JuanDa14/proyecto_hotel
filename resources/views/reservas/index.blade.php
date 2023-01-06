@@ -41,7 +41,7 @@
                     <!-- //TODO agregar can -->
 
                     <td style="text-align: center;display: flex;" class="d-flex justify-content-between">
-                        <form action="{{route('reservas.edit',$r->id)}}" method="get">
+                        <form action="{{ route('imprimir-reserva', $r->id) }}" method="get">
                             @csrf
                             <button type="submit" class="btn btn-primary"><i class="fas fa-download"></i></button>
                         </form>
