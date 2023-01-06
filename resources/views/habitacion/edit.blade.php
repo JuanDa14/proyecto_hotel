@@ -67,7 +67,7 @@
                             <label for="serv">Servicios Adicionales</label>
                             <select id="serv" class="form-control">
                                 <option value="" disabled selected>-- Selecciona --</option>
-                                @foreach ($servicios as $servicio)
+                                @foreach ($servi as $servicio)
                                     <option value="{{ $servicio->id }}_{{ $servicio->descripcion }}">{{ $servicio->descripcion }}</option>
                                 @endforeach
                             </select>
@@ -110,5 +110,6 @@
 @stop
 
 @section('js')
-    <script src="/js/addservicios.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/addservicios2.js"></script>
 @stop

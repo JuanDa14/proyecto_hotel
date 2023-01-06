@@ -114,11 +114,10 @@ class HabitacionController extends Controller
     {
         $habitaciones = Habitacion::all();
         $tipos = TipoHabitacion::all();
-        $servicios = Service::all();
+        $servi = Service::all();
         $habitacion = $habitaciones->find($id);
 
         $detalles = DetalleServicio::where('habitacion_id', $id)->get();
-        // dd($detalles);
         $servicios = [];
         $ids = [];
         $index = 0;
@@ -131,7 +130,7 @@ class HabitacionController extends Controller
         }
         // dd($servicios);
 
-        return view('habitacion.edit', compact('habitacion', 'tipos', 'servicios', 'detalles'));
+        return view('habitacion.edit', compact('habitacion', 'tipos', 'servicios', 'detalles', 'servi'));
     }
 
     public function update(Request $request, $id)
