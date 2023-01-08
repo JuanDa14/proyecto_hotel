@@ -4,10 +4,12 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HabitacionController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TipoHabitacionController;
 use App\Http\Controllers\UserController;
+use App\Models\Reserva;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,3 +42,7 @@ Route::resource('reservas', ReservaController::class);
 Route::get('reservas/imprimir/{id}', [ReservaController::class, 'imprimir'])->name('imprimir-reserva');
 
 Route::get('grafico/', [DashboardController::class, 'grafico'])->name('grafico');
+
+Route::get('reporte', [ReporteController::class, 'vista_reporte_fecha'])->name('ver_reporte_fecha');
+Route::get('reporte/fecha/{a}/{m}', [ReporteController::class, 'reporte_fecha'])->name('reporte_fecha');
+Route::post('imprimir/reserva', [ReporteController::class, 'imprimir_reserva'])->name('imprimir_reserva');

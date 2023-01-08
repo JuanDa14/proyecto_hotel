@@ -275,6 +275,18 @@ return [
             ]
         ],
         [
+            'text' => 'Reportes',
+            'icon' => 'fas fa-fw fa-file',
+            'can' => 'ver.dashboard',
+            'submenu' => [
+                [
+                    'text' => 'Reservas',
+                    'route' => 'ver_reporte_fecha'
+                ],
+
+            ]
+        ],
+        [
             'text'    => 'Grafico de Reservas',
             'icon'    => 'fas fa-chart-bar',
             'url' => 'grafico',
