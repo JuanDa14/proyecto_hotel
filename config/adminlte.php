@@ -282,6 +282,9 @@ return [
                 [
                     'text' => 'Reservas',
                     'route' => 'ver_reporte_fecha'
+                ], [
+                    'text' => 'Financiero',
+                    'route' => 'ver_reporte_financiero'
                 ],
 
             ]

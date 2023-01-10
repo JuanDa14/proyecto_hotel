@@ -66,4 +66,17 @@ class ReporteController extends Controller
         $pdf = PDF::loadView('reportes.pdf_reserva', $data);
         return $pdf->download('reporte_reserva_' . $m . $a . '.pdf');
     }
+
+
+    function vista_reporte_financiero()
+    {
+    }
+
+    function reporte_financiero($a, $m)
+    {
+    }
+
+    function imprimir_financiero(Request $request)
+    {
+    }
 }

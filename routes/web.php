@@ -46,3 +46,8 @@ Route::get('grafico/', [DashboardController::class, 'grafico'])->name('grafico')
 Route::get('reporte', [ReporteController::class, 'vista_reporte_fecha'])->name('ver_reporte_fecha');
 Route::get('reporte/fecha/{a}/{m}', [ReporteController::class, 'reporte_fecha'])->name('reporte_fecha');
 Route::post('imprimir/reserva', [ReporteController::class, 'imprimir_reserva'])->name('imprimir_reserva');
+
+// Financiero
+Route::get('/reporte/financiero', [ReporteController::class, 'ver_reporte_financiero'])->name('ver_reporte_financiero');
+Route::get('reporte/financiero/{a}/{m}', [ReporteController::class, 'reporte_financiero'])->name('reporte_financiero');
+Route::post('imprimir/financiero', [ReporteController::class, 'imprimir_financiero'])->name('imprimir_financiero');
