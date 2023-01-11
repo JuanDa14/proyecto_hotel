@@ -13,16 +13,16 @@ class DatabaseSeeder extends Seeder
             TipoPagoSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            ModelHasRoleSeeder::class,
+            // ModelHasRoleSeeder::class,
             TipoHabitacionSeeder::class,
             HabitacionSeeder::class,
-            ClienteSeeder::class,
+            // ClienteSeeder::class,
             ProveedorSeeder::class,
-            ReservaSeeder::class,
-            DetalleReservaSeeder::class,
-            ProductoSeeder::class,
-            PedidoSeeder::class,
-            DetallePedidoSeeder::class,
+            // ReservaSeeder::class,
+            // DetalleReservaSeeder::class,
+            // ProductoSeeder::class,
+            // PedidoSeeder::class,
+            // DetallePedidoSeeder::class,
         ]);
     }
 }
