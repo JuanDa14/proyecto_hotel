@@ -13,7 +13,7 @@ class ProductoFactory extends Factory
      * @return array
      */
 
-     protected $model = Producto::class;
+    protected $model = Producto::class;
 
     public function definition()
     {
@@ -21,7 +21,7 @@ class ProductoFactory extends Factory
             'nombre' => $this->faker->text(10),
             'descripcion' => $this->faker->text(20),
             'estado' => $this->faker->randomElement(['ACTIVO', 'INACTIVO']),
-            'precio' => $this->faker->randomFloat(2,3,300)
+            'precio' => $this->faker->randomFloat(2, 3, 300)
         ];
     }
 }
