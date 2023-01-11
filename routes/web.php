@@ -3,6 +3,8 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HabitacionController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ReservaController;
@@ -33,6 +35,9 @@ Route::resource('servicios', ServiceController::class);
 Route::resource('proveedores', ProveedorController::class);
 Route::get('proveedores/disable/{id}', [ProveedorController::class, 'inhabilitar'])->name('inhabilitar-proveedor');
 Route::get('proveedores/enable/{id}', [ProveedorController::class, 'habilitar'])->name('habilitar-proveedor');
+
+Route::resource('productos', ProductoController::class)->names('productos');
+Route::resource('pedidos', PedidoController::class)->names('pedidos');
 
 // Clientes
 Route::resource('clientes', ClienteController::class);

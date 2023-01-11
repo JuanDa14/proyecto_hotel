@@ -15,9 +15,9 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('producto', 100);
+            $table->string('nombre', 100);
             $table->string('descripcion', 100);
-            $table->enum('estado', ['ACTIVO', 'INACTIVO']);
+            $table->enum('estado', ['ACTIVO', 'INACTIVO'])->nullable();
             $table->string('precio', 20);
             $table->timestamps();
         });

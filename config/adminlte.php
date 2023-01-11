@@ -250,9 +250,21 @@ return [
             'can' => 'ver.dashboard',
         ],
         [
-            'text' => 'Proovedores',
+            'text' => 'Proveedores',
             'icon' => 'fas fa-fw fa-user',
             'url' => 'proveedores',
+            'can' => 'admin.dashboard',
+        ],
+        [
+            'text' => 'Productos',
+            'icon' => 'fas fa-fw fa-list',
+            'url' => 'productos',
+            'can' => 'admin.dashboard',
+        ],
+        [
+            'text' => 'Pedidos',
+            'icon' => 'fas fa-fw fa-book',
+            'url' => 'pedidos',
             'can' => 'admin.dashboard',
         ],
         [
