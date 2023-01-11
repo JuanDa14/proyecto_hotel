@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\DetalleReserva;
+use App\Models\ModelHasRole;
 use Illuminate\Database\Seeder;
 
-class DetalleReservaSeeder extends Seeder
+class ModelHasRoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class DetalleReservaSeeder extends Seeder
      */
     public function run()
     {
-        DetalleReserva::factory(300)->create();
+        ModelHasRole::factory(10)->create();
     }
 }

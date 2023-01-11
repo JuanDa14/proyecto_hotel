@@ -26,6 +26,8 @@ class UserController extends Controller
             ->select("u.id", "u.name as nombre", "u.apellidos", "u.dni", "u.email", "u.estado", "u.telefono", "u.direccion", "u.genero", "u.fechanacimiento", "r.name")
             ->where("r.id", "!=", "1")
             ->get();
+
+
         return view('user.index', compact('users'));
     }
 
