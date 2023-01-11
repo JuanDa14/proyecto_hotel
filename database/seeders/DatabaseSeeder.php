@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             ProveedorSeeder::class,
             ReservaSeeder::class,
             DetalleReservaSeeder::class,
+            PedidoSeeder::class,
+            DetallePedidoSeeder::class,
         ]);
     }
 }

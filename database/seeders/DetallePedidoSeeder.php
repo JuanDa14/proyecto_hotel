@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DetallePedido;
 use Illuminate\Database\Seeder;
 
 class DetallePedidoSeeder extends Seeder
@@ -13,6 +14,6 @@ class DetallePedidoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DetallePedido::factory(100)->create();
     }
 }

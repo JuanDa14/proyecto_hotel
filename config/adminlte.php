@@ -308,10 +308,17 @@ return [
             'can' => 'admin.dashboard',
         ],
         [
+            'text' => 'Guia de usuario',
+            'icon' => 'fas fa-fw fa-book',
+            'url' => 'guia',
+            'can' => 'admin.dashboard',
+        ],
+        [
             'text' => 'Pefil de usuario',
             'icon' => 'fas fa-cog',
             'url' => 'profile'
         ],
+
     ],
 
     /*

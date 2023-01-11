@@ -14,7 +14,7 @@
                 <div class="inner">
                     <h3>Reservas</h3>
                     <h4>{{ $reservas }}</h4>
-                    <p>Reservas registradas</p>                 
+                    <p>Reservas registradas</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-money-bill"></i>
@@ -30,7 +30,7 @@
                 <div class="inner">
                     <h3>Clientes</h3>
                     <h4>{{ $clientes }}</h4>
-                    <p>Clientes registrados</p>                 
+                    <p>Clientes registrados</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-user-friends"></i>
@@ -46,7 +46,7 @@
                 <div class="inner">
                     <h3>Proveedores</h3>
                     <h4>{{ $proveedores }}</h4>
-                    <p>Proveedores registrados</p>                 
+                    <p>Proveedores registrados</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-user"></i>
@@ -62,7 +62,7 @@
                 <div class="inner">
                     <h3>Usuarios</h3>
                     <h4>{{ $usuarios }}</h4>
-                    <p>Clientes registrados</p>                 
+                    <p>Clientes registrados</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-user-friends"></i>
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
     <div class="row mt-4">
@@ -85,23 +85,36 @@
                 <div class="col-12">
                     <div class="info-box mb-3 bg-success">
                         <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
-            
+
                         <div class="info-box-content">
                             <span class="info-box-text">Ingresos Total</span>
                             <span class="info-box-number">S/ {{$ingresos}}</span>
                         </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="info-box mb-3 bg-primary">
+                        <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Costos Totales</span>
+                            <span class="info-box-number">S/ {{$costos}}</span>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="info-box mb-3 bg-secondary">
                         <span class="info-box-icon"><i class="fas fa-clipboard"></i></span>
-            
+
                         <div class="info-box-content">
                             <span class="info-box-text">Usuario que Realizó más Reservaciones</span>
-                            
+
                             @foreach ($usermasRes as $item)
-                                {{ $item->name }} {{ $item->apellidos }}
-                                <span class="info-box-number">{{ $item->user_count }}</span>
+                            {{ $item->name }} {{ $item->apellidos }}
+                            <span class="info-box-number">{{ $item->user_count }}</span>
                             @endforeach
                         </div>
                     </div>
@@ -118,13 +131,13 @@
 
 
 @php
-    $contador = 0;
-    @endphp
+$contador = 0;
+@endphp
 
 @foreach ($data as $item)
 <input type="hidden" value="{{ $item }}" id="cantidad{{ $contador }}">
 @php
-    $contador++;
+$contador++;
 @endphp
 @endforeach
 
@@ -136,7 +149,7 @@
     for (let i = 0; i < 12; i++) {
         cantidad = document.getElementById(`cantidad${contador}`).value;
         arrayQty.push(cantidad);
-        localStorage.setItem('data',JSON.stringify(arrayQty));  
+        localStorage.setItem('data', JSON.stringify(arrayQty));
         contador++;
     }
 </script>

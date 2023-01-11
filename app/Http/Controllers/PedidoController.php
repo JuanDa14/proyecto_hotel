@@ -24,7 +24,10 @@ class PedidoController extends Controller
     {
         $pedidos = DB::table('pedidos as p')
             ->join('proveedor as r', 'r.id', '=', 'p.idproveedor')
-            ->select('p.id', 'p.fechapedido', 'p.fechaentrega', 'p.total', 'r.nombre')->get();
+            ->select('p.id', 'p.fechapedido', 'p.fechaentrega', 'p.total', 'r.nombre')
+            ->get();
+
+
         return view('pedidos.index', compact('pedidos'));
     }
 
@@ -35,7 +38,9 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        $proveedores = Proveedor::all();
+        $proveedores = DB::table('proveedor')
+            ->orderBy('estrellas', 'DESC')
+            ->get();
         $productos = Producto::all();
         return view('pedidos.create', compact('proveedores', 'productos'));
     }

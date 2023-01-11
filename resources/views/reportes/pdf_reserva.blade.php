@@ -8,8 +8,8 @@
     <title>Reporte</title>
 </head>
 
-<body style="background-color: #eee;">
-    <div style="margin: 6rem; border: 1px solid #555; border-radius: 20px; padding: 1rem">
+<body>
+    <div style="border: 1px solid #555; border-radius: 20px; padding: 1rem">
 
         <div class="mb-3">
             <div>
@@ -28,14 +28,13 @@
 
         <div>
             <h1>Hotel San Jose</h1>
-            <span style="display: block;margin-top:-1rem; ">R.U.C. {{ $reservas[0]->id * 365249 }}</h5>
+            <span style="display: block;margin-top:-1rem; ">R.U.C.20552103816</h5>
         </div>
 
         <div style="margin-top: 1rem;">
             <table class="table table-light" style="text-align: center; border: solid 1px; width: 100%">
                 <thead class="thead-light">
                     <tr>
-                        <th>#</th>
                         <th>Recepcionista</th>
                         <th>Cliente</th>
                         <th>Habitacion</th>
@@ -48,7 +47,6 @@
 
                     @foreach ($reservas as $reserva)
                     <tr>
-                        <td>{{ $reserva->id }}</td>
                         <td>{{ $reserva->name }} {{ $reserva->apellidos }}</td>
                         <td>{{ $reserva->cliente }}</td>
                         <td>{{ $reserva->tipohabitacion }}</td>

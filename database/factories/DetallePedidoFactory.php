@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\DetallePedido;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 class DetallePedidoFactory extends Factory
 {
@@ -11,10 +13,15 @@ class DetallePedidoFactory extends Factory
      *
      * @return array
      */
+    protected $model = DetallePedido::class;
+
     public function definition()
     {
         return [
-            //
+            'cantidad' => $this->faker->randomDigitNotNull(),
+            'precio' => $this->faker->randomFloat(2, 0, 1000),
+            'idpedido' => $this->faker->randomElement(DB::table('pedidos')->pluck('id')->toArray()),
+            'idproducto' => $this->faker->randomElement(DB::table('productos')->pluck('id')->toArray()),
         ];
     }
 }
