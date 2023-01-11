@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             TipoPagoSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            ModelHasRoleSeeder::class,
             TipoHabitacionSeeder::class,
             HabitacionSeeder::class,
             ClienteSeeder::class,

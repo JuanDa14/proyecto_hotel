@@ -44,14 +44,14 @@
                     <!-- //TODO agregar can -->
 
                     {{-- <td style="text-align: center;display: flex;" class="d-flex justify-content-between"> --}}
-                        {{-- <form action="{{ route('imprimir-reserva', $r->id) }}" method="get">
-                            @csrf
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-download"></i></button>
-                        </form> --}}
-                        {{-- <form action="{{route('reservas.show',$r->id)}}" method="get">
-                            @csrf
-                            <button type="submit" class="btn btn-info"><i class="fas fa-info"></i></button>
-                        </form> --}}
+                    {{-- <form action="{{ route('imprimir-reserva', $r->id) }}" method="get">
+                    @csrf
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-download"></i></button>
+                    </form> --}}
+                    {{-- <form action="{{route('reservas.show',$r->id)}}" method="get">
+                    @csrf
+                    <button type="submit" class="btn btn-info"><i class="fas fa-info"></i></button>
+                    </form> --}}
                     {{-- </td> --}}
 
 

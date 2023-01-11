@@ -73,6 +73,9 @@ class CreatePermissionTables extends Migration
                 ['role_id', $columnNames['model_morph_key'], 'model_type'],
                 'model_has_roles_role_model_type_primary'
             );
+
+            $table->string('updated_at')->nullable();
+            $table->string('created_at')->nullable();
         });
 
         Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames) {

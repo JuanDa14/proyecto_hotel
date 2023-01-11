@@ -24,7 +24,7 @@ class PedidoController extends Controller
     {
         $pedidos = DB::table('pedidos as p')
             ->join('proveedor as r', 'r.id', '=', 'p.idproveedor')
-            ->select('p.id', 'p.fechapedido','p.fechaentrega','p.total','r.nombre')->get();
+            ->select('p.id', 'p.fechapedido', 'p.fechaentrega', 'p.total', 'r.nombre')->get();
         return view('pedidos.index', compact('pedidos'));
     }
 
@@ -40,7 +40,7 @@ class PedidoController extends Controller
         return view('pedidos.create', compact('proveedores', 'productos'));
     }
 
-   
+
     public function store(Request $request)
     {
         $tam = count($request->precios);
@@ -52,7 +52,7 @@ class PedidoController extends Controller
         $pedido->total = $request->total;
         $pedido->save();
 
-        for ($i=0; $i < $tam; $i++) {
+        for ($i = 0; $i < $tam; $i++) {
             $detalle = new DetallePedido();
             $detalle->cantidad = $request->cantidades[$i];
             $detalle->precio = $request->precios[$i];
