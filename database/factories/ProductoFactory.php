@@ -19,9 +19,9 @@ class ProductoFactory extends Factory
     {
         return [
             'nombre' => $this->faker->name,
-            'descripcion' => $this->faker->paragraph(4),
-            'estado' => 'ACTIVO',
-            'precio' => 5.59
+            'descripcion' => $this->faker->text(20),
+            'estado' => $this->faker->randomElement(['ACTIVO', 'INACTIVO']),
+            'precio' => $this->faker->randomFloat(2,3,300)
         ];
     }
 }
