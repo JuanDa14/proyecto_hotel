@@ -3,54 +3,54 @@
 @section('title', 'Servicios Adicionales')
 
 @section('content')
-    <div class="container-fluid pt-4">
-        <div class="row">
-            <div class="col-12 col-md-6 text-md-left">
-                <h3 class="text-gray">Servicios Adicionales</h3>
-            </div>
-            <div class="col-12 col-md-6 text-md-right">
-                <a href="{{ route('servicios.create') }}" class="btn btn-success">
-                    <i class="fas fa-plus-circle"></i>
-                    Nuevo Servicio
-                </a>
-            </div>
+<div class="container-fluid pt-4">
+    <div class="row">
+        <div class="col-12 col-md-6 text-md-left">
+            <h3 class="text-gray">Servicios Adicionales</h3>
         </div>
-        <div class="mt-4">
-            <table id="datatable" class="table table-light dt-responsive nowrap text-center">
-                <thead>
-                    <th>ID</th>
-                    <th>Descripcion</th>
-                    <th>Acciones</th>
-                </thead>
-                <tbody>
-                    @foreach ($services as $service)
-                    <tr>
-                        <td>{{ $service->id }}</td>
-                        <td>{{ $service->descripcion }}</td>
-                        <td>
-                            <div class="container d-flex justify-content-center">
-                                <form action="{{ route('servicios.edit', $service->id) }}"
-                                    method="get"
-                                    class="mr-1 form-edit"
-                                    >
-                                    <button class="btn btn-primary"><i class="fas fa-edit"></i> Modificar</button>
-                                </form>
-                                <form action="{{ route('servicios.destroy', $service->id) }}"
-                                    method="post"
-                                    class="form-delete"
-                                    >
-                                    @method('delete')
-                                    @csrf
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        @can('admin.dashboard')
+        <div class="col-12 col-md-6 text-md-right">
+            <a href="{{ route('servicios.create') }}" class="btn btn-success">
+                <i class="fas fa-plus-circle"></i>
+                Nuevo Servicio
+            </a>
         </div>
+        @endcan
     </div>
+    <div class="mt-4">
+        <table id="datatable" class="table table-light dt-responsive nowrap text-center">
+            <thead>
+                <th>ID</th>
+                <th>Descripcion</th>
+                @can('admin.dashboard')
+                <th>Acciones</th>
+                @endcan
+            </thead>
+            <tbody>
+                @foreach ($services as $service)
+                <tr>
+                    <td>{{ $service->id }}</td>
+                    <td>{{ $service->descripcion }}</td>
+                    @can('admin.dashboard')
+                    <td>
+                        <div class="container d-flex justify-content-center">
+                            <form action="{{ route('servicios.edit', $service->id) }}" method="get" class="mr-1 form-edit">
+                                <button class="btn btn-primary"><i class="fas fa-edit"></i> Modificar</button>
+                            </form>
+                            <form action="{{ route('servicios.destroy', $service->id) }}" method="post" class="form-delete">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</button>
+                            </form>
+                        </div>
+                    </td>
+                    @endcan
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 @stop
 
 @section('css')

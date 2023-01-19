@@ -296,7 +296,8 @@ return [
                     'route' => 'ver_reporte_fecha'
                 ], [
                     'text' => 'Financiero',
-                    'route' => 'ver_reporte_financiero'
+                    'route' => 'ver_reporte_financiero',
+                    'can' => 'admin.dashboard'
                 ],
 
             ]

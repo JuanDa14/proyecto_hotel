@@ -10,11 +10,11 @@
             <h3 class="text-gray">Reservas</h3>
         </div>
         <!-- //TODO agregar permisos -->
-        <!-- @can('user.create') -->
+        @can('recep.dashboard')
         <div class="col-12 col-md-6 text-md-right">
             <a href="{{ route('reservas.create') }}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Nuevo Reserva</button></a>
         </div>
-        <!-- @endcan -->
+        @endcan
     </div>
     <div class="header">
         <br>
