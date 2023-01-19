@@ -60,7 +60,6 @@ Route::post('imprimir/financiero', [ReporteController::class, 'imprimir_financie
 
 Route::get('imprimir/pdf/guia', [ReporteController::class, 'imprimir_guia'])->name('imprimir_guia');
 
-
 Route::get('guia', function () {
     return view('guias.guia_usuario');
 });
