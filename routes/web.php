@@ -57,6 +57,9 @@ Route::get('/reporte/financiero', [ReporteController::class, 'vista_reporte_fina
 Route::get('reporte/financiero/{a}/{m}', [ReporteController::class, 'reporte_financiero'])->name('reporte_financiero');
 Route::post('imprimir/financiero', [ReporteController::class, 'imprimir_financiero'])->name('imprimir_financiero');
 
+
+Route::get('imprimir/pdf/guia', [ReporteController::class, 'imprimir_guia'])->name('imprimir_guia');
+
 Route::get('guia', function () {
     return view('guias.guia_usuario');
 });

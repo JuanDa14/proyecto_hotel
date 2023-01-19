@@ -56,7 +56,7 @@
                                 <div class="col-12 col-md-6">
                                     <p class="h6">Vendedor : </p>
                                     <select class="form-control selectpicker " id="idempleado" data-live-search="true" onchange="agregarEmpleado()">
-                                        <option selected disabled value="0">Seleccione un Vendedor</option>
+                                        <option selected disabled value="0">--Seleccione--</option>
                                         @foreach ($vendedores as $item)
                                         <option value="{{ $item->id }}_{{$item->name}}_{{$item->apellidos}}_{{$item->dni}}">
                                             {{ $item->name }} {{ $item->apellidos }}

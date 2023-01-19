@@ -8,7 +8,7 @@
     <div class="row">
         <h1 class="col-6">Guia de usuario</h1>
         <div class="col-6 text-right">
-            <a href="#" class="btn btn-primary" target="_blank">Descargar PDF
+            <a href="{{route('imprimir_guia')}}" class="btn btn-primary">Descargar PDF
                 <i class="fas fa-download"></i>
             </a>
         </div>

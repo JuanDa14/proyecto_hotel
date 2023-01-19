@@ -140,4 +140,10 @@ class ReporteController extends Controller
         $pdf = PDF::loadView('reportes.pdf_financiero', $data);
         return $pdf->download('reporte_financiero_' . $m . $a . '.pdf');
     }
+
+    function imprimir_guia()
+    {
+        $pdf = PDF::loadView('guias.guia_usuario_pdf');
+        return $pdf->download('guia_usuario.pdf');
+    }
 }
